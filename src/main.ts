@@ -8,10 +8,11 @@ function start() {
   worker.postMessage(input?.value);
   // @ts-ignore
   input!.value = "";
+  output!.textContent = "Sorting...";
 }
 
 worker.onmessage = (sorted: MessageEvent) => {
-  output!.textContent = String(sorted.data);
+  output!.textContent = "[" + String(sorted.data) + "]";
 }
 
 
