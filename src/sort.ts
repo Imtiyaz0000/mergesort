@@ -52,7 +52,7 @@ function sort(arr: number[]) {
 
 self.onmessage = (event: MessageEvent) => {
   try {
-    let result: number[][] = sort(eval(event.data));
+    let result: number[][] = sort(JSON.parse(event.data));
     console.log(event);
     self.postMessage(result);
   }
