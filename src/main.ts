@@ -1,19 +1,20 @@
-import { sort } from "./sort.ts";
+const worker = new Worker(new URL('./sort.ts', import.meta.url))
 
-async function start() {
-  console.log("hi");
-  //const app = document.querySelector("div");
-  const input = document.getElementById("input");
-  const output = document.getElementById("output");
-  try {
+const input = document.getElementById("input");
+const output = document.getElementById("output");
+
+function start() {
   // @ts-ignore
-  let result: number[][] = await sort(eval(input?.value));
-  output!.textContent = "[" + result + "]";
-  }
-  catch (e) {
-    output!.textContent = "error: " + e;
-  }
+  worker.postMessage(input?.value);
+  // @ts-ignore
+  input!.value = "";
 }
+
+worker.onmessage = (sorted: MessageEvent) => {
+  output!.textContent = String(sorted.data);
+}
+
+
 
 const button = document.getElementById("button")
 button?.addEventListener("click", start);

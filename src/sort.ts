@@ -33,7 +33,7 @@ function merge(arr1: number[], arr2: number[]) {
     return newArr;
 }
 
-export function sort(arr: number[]) {
+function sort(arr: number[]) {
     let listArr: number[][] = [];
     for (let i of arr) {
         let temp: number[] = [];
@@ -48,4 +48,15 @@ export function sort(arr: number[]) {
         }
     }
     return listArr;
+}
+
+self.onmessage = (event: MessageEvent) => {
+  try {
+    let result: number[][] = sort(eval(event.data));
+    console.log(event);
+    self.postMessage(result);
+  }
+  catch (error) {
+    self.postMessage(error);
+  }
 }
