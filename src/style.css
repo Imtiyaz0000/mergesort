@@ -2,6 +2,7 @@ body {
     background-color: #292b2c;
     color: #F9F9F9;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: auto;
   }
   
   #main {
@@ -27,6 +28,7 @@ body {
     padding: 10px;
     margin-right: 10px;
     flex-grow: 1;
+    overflow: hidden;
   }
   
   #button {
