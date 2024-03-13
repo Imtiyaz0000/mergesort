@@ -6,6 +6,7 @@ async function start() {
   const input = document.getElementById("input");
   const output = document.getElementById("output");
   try {
+  // @ts-ignore
   let result: number[][] = await sort(eval(input?.value));
   output!.textContent = "[" + result + "]";
   }
