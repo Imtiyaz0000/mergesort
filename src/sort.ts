@@ -41,11 +41,15 @@ function sort(arr: number[]) {
         listArr.push(temp);
     }
     while (listArr.length != 1) {
-        for (let i = 0; i < listArr.length - 1; i++) {
+      let tempArr: number[][] = [];
+        for (let i = 0; i < listArr.length - 1; i+=2) {
         let temp: number[] = merge(listArr[i], listArr[i + 1]);
-        listArr[i] = temp;
-        listArr.splice(i + 1, 1);
-        }
+        tempArr.push(temp);
+      }
+      if (listArr.length % 2 === 1) {
+        tempArr.push(listArr[listArr.length - 1])
+      }
+      listArr = tempArr;
     }
     return listArr;
 }
@@ -53,7 +57,6 @@ function sort(arr: number[]) {
 self.onmessage = (event: MessageEvent) => {
   try {
     let result: number[][] = sort(JSON.parse(event.data));
-    console.log(event);
     self.postMessage(result);
   }
   catch (error) {
