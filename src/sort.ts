@@ -2,8 +2,8 @@ function merge(arr1: number[], arr2: number[]) {
     let newArr: number[] = [];
     let i1: number = 0;
     let i2: number = 0;
-    let len1 = arr1.length;
-    let len2 = arr2.length;
+    let len1: number = arr1.length;
+    let len2: number = arr2.length;
     while ((i1 < len1) && (i2 < len2)) {
     	if (arr1[i1] < arr2[i2]) {
       	newArr.push(arr1[i1]);
